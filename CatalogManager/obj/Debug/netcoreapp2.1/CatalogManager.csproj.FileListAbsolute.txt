@@ -1,0 +1,3 @@
+C:\Users\Cem\Desktop\CatalogManager\CatalogManager\obj\Debug\netcoreapp2.1\CatalogManager.csproj.CoreCompileInputs.cache
+C:\Users\Cem\Desktop\CatalogManager\CatalogManager\obj\Debug\netcoreapp2.1\CatalogManager.AssemblyInfoInputs.cache
+C:\Users\Cem\Desktop\CatalogManager\CatalogManager\obj\Debug\netcoreapp2.1\CatalogManager.AssemblyInfo.cs
