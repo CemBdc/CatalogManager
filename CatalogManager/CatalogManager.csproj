@@ -15,4 +15,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.4.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CatalogManager.Data\CatalogManager.Data.csproj" />
+  </ItemGroup>
+
 </Project>

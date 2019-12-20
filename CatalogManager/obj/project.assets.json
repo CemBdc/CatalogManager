@@ -4340,6 +4340,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "CatalogManager.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "compile": {
+          "bin/placeholder/CatalogManager.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CatalogManager.Data.dll": {}
+        }
       }
     }
   },
@@ -11854,10 +11864,16 @@
         "system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "CatalogManager.Data/1.0.0": {
+      "type": "project",
+      "path": "../CatalogManager.Data/CatalogManager.Data.csproj",
+      "msbuildProject": "../CatalogManager.Data/CatalogManager.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "CatalogManager.Data >= 1.0.0",
       "Microsoft.AspNetCore.App >= 2.1.1",
       "Microsoft.AspNetCore.Razor.Design >= 2.1.2",
       "Microsoft.NETCore.App >= 2.1.0",
@@ -11871,11 +11887,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Cem\\Desktop\\CatalogManager\\CatalogManager\\CatalogManager.csproj",
+      "projectUniqueName": "C:\\Users\\Cem\\Desktop\\Cem\\Projects\\NETCore\\CatalogManager\\CatalogManager\\CatalogManager.csproj",
       "projectName": "CatalogManager",
-      "projectPath": "C:\\Users\\Cem\\Desktop\\CatalogManager\\CatalogManager\\CatalogManager.csproj",
+      "projectPath": "C:\\Users\\Cem\\Desktop\\Cem\\Projects\\NETCore\\CatalogManager\\CatalogManager\\CatalogManager.csproj",
       "packagesPath": "C:\\Users\\Cem\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Cem\\Desktop\\CatalogManager\\CatalogManager\\obj\\",
+      "outputPath": "C:\\Users\\Cem\\Desktop\\Cem\\Projects\\NETCore\\CatalogManager\\CatalogManager\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -11893,7 +11909,11 @@
       },
       "frameworks": {
         "netcoreapp2.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Cem\\Desktop\\Cem\\Projects\\NETCore\\CatalogManager\\CatalogManager.Data\\CatalogManager.Data.csproj": {
+              "projectPath": "C:\\Users\\Cem\\Desktop\\Cem\\Projects\\NETCore\\CatalogManager\\CatalogManager.Data\\CatalogManager.Data.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
