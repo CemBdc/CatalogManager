@@ -1,24 +1,22 @@
 ﻿using CatalogManager.Data.Context;
+using CatalogManager.Data.Repository.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace CatalogManager.Data.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private readonly DBContext _dbContext;
+        private readonly CatalogManagerDbContext _dbContext;
+        public DbSet<T> Table { get; set; }
 
-        public Repository(DBContext dbContext)
+        public Repository(CatalogManagerDbContext dbContext)
         {
             this._dbContext = dbContext;
             this.Table = dbContext.Set<T>();
         }
-
-        public DbSet<T> Table { get; set; }
 
         public bool Add(T entity)
         {
@@ -60,7 +58,7 @@ namespace CatalogManager.Data.Repository
         {
             try
             {
-                dbContext.SaveChanges();
+                _dbContext.SaveChanges();
                 return true;
             }
             catch

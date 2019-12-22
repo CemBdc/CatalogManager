@@ -12,7 +12,8 @@ namespace CatalogManager.Data.Models
         [Key, Column(Order = 0)]
         public int Id { get; set; }
 
-        [Key, Column(Order = 1)]
+        [Required]
+        [Column(Order = 1)]
         public string Code { get; set; }
 
         [Required]

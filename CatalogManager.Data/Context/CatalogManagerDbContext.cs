@@ -6,9 +6,9 @@ using System.Text;
 
 namespace CatalogManager.Data.Context
 {
-    public class DBContext: DbContext
+    public class CatalogManagerDbContext: DbContext
     {
-        public DBContext(DbContextOptions<DbContext> options) : base(options)
+        public CatalogManagerDbContext(DbContextOptions<CatalogManagerDbContext> options) : base(options)
         {
         }
 
@@ -16,14 +16,19 @@ namespace CatalogManager.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Product>()
+            .HasIndex(u => u.Code)
+            .IsUnique();
+
             modelBuilder.Entity<Product>().HasData(
                 new Product
                 {
+                    Id = 1,
                     Code = "Q1W2E3",
                     Name = "Electronics",
                     Picture = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuEVRd9xp1zOuFsCedkx8qZ0srywEi0Maw2vf-QdxeXNQcUUB5&s",
                     Price = 1500,
-                    UpdatedAt = new DateTime()
+                    UpdatedAt = DateTime.Now
                 }
             );
         }

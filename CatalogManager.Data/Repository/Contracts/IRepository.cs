@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace CatalogManager.Data.Repository
+namespace CatalogManager.Data.Repository.Contracts
 {
     public interface IRepository<T> where T : class
     {

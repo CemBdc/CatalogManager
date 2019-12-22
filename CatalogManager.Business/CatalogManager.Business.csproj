@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CatalogManager.Data\CatalogManager.Data.csproj" />
+    <ProjectReference Include="..\CatalogManager.Dto\CatalogManager.Dto.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CatalogManager.Business;
+using CatalogManager.Business.Contracts;
 using CatalogManager.Data.Context;
+using CatalogManager.Data.UnitOfWork;
+using CatalogManager.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -27,8 +31,13 @@ namespace CatalogManager
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddDbContext<DBContext>(o => o.UseSqlServer(Configuration.GetConnectionString("CatalogManagerDB")));
-            services.AddScoped(typeof(IProductRepository<>), typeof(ProductRepository<>));
+
+
+            services.AddDbContext<CatalogManagerDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("CatalogManagerDB")));
+            services.AddScoped(typeof(IProduct), typeof(Product));
+            services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +48,7 @@ namespace CatalogManager
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseMiddleware<LoggingMiddleware>();
             app.UseMvc();
         }
     }
