@@ -27,6 +27,18 @@ namespace CatalogManager.Controllers
             return Ok();
         }
 
+        [HttpGet("{code}")]
+        public async Task<ActionResult<GetProductDto>> Get(string code)
+        {
+            await _product.
+        }
+
+        [HttpGet]
+        public ActionResult<string> Get()
+        {
+            return "value";
+        }
+
         #region Versioned HealthCheck
         [HttpGet]
         [MapToApiVersion("1")]

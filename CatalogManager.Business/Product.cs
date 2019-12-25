@@ -46,17 +46,22 @@ namespace CatalogManager.Business
             }
         }
 
-        public Task<IEnumerable<AddProductDto>> All()
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<bool> Delete(AddProductDto entity)
         {
             throw new NotImplementedException();
         }
 
+        public Task<GetProductDto> GetProductByCode(string code)
+        {
+            var product = await _uow.Product.Where(p=> p.Code == code).
+        }
+
         public Task<bool> Update(AddProductDto entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<IEnumerable<GetProductDto>> IProduct.All()
         {
             throw new NotImplementedException();
         }

@@ -2,8 +2,10 @@
 using CatalogManager.Data.Repository.Contracts;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace CatalogManager.Data.Repository
 {
@@ -18,35 +20,41 @@ namespace CatalogManager.Data.Repository
             this.Table = dbContext.Set<T>();
         }
 
-        public bool Add(T entity)
+        public async Task<bool> Add(T entity)
         {
             Table.Add(entity);
-            return Save();
+            return await Save();
         }
 
-        public bool Update(T entity)
+        public async Task<bool> Update(T entity)
         {
             Table.Update(entity);
-            return Save();
+            return await Save();
         }
 
-        public bool Delete(T entity)
+        public async Task<bool> Delete(T entity)
         {
             Table.Remove(entity);
-            return Save();
+            return await Save();
         }
 
-        public IQueryable<T> All()
+        public async Task<IEnumerable<T>> All()
         {
-            return Table;
+            return await Table.ToListAsync();
         }
 
-        public IQueryable<T> Where(Expression<Func<T, bool>> where)
+        public async Task<bool> Get(Expression<Func<T, bool>> where)
         {
-            return Table.Where(where);
+            Table.FirstOrDefaultAsync(where);
+            return await Save();
         }
 
-        public IQueryable<T> OrderBy<TKey>(Expression<Func<T, TKey>> orderBy, bool isDesc)
+        public async Task<IEnumerable<T>> Where(Expression<Func<T, bool>> where)
+        {
+            return await Table.Where(where).ToListAsync();
+        }
+
+        public IEnumerable<T> OrderBy<TKey>(Expression<Func<T, TKey>> orderBy, bool isDesc)
         {
             if (isDesc)
                 return Table.OrderByDescending(orderBy);
@@ -54,11 +62,11 @@ namespace CatalogManager.Data.Repository
         }
 
 
-        private bool Save()
+        private async Task<bool> Save()
         {
             try
             {
-                _dbContext.SaveChanges();
+                await _dbContext.SaveChangesAsync();
                 return true;
             }
             catch
