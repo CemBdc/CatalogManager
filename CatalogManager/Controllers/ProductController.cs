@@ -27,20 +27,22 @@ namespace CatalogManager.Controllers
             return Ok();
         }
 
+        #region Versioned HealthCheck
         [HttpGet]
         [MapToApiVersion("1")]
-        [Route("GetValues")]
-        public ActionResult<IEnumerable<string>> GetV1Values()
+        [Route("HealthCheck")]
+        public ActionResult<IEnumerable<string>> HealthCheckV1()
         {
             return new string[] { "value1", "value1" };
         }
 
         [HttpGet]
         [MapToApiVersion("2")]
-        [Route("GetValues")]
-        public ActionResult<IEnumerable<string>> GetV2Values()
+        [Route("HealthCheck")]
+        public ActionResult<IEnumerable<string>> HealthCheckV2()
         {
             return new string[] { "value2", "value2" };
-        }
+        } 
+        #endregion
     }
 }
