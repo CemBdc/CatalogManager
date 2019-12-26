@@ -1,6 +1,6 @@
 # Product Catalog Manager API
 
-Create a RESTful API solution in .NET Core for managing a Product Catalog. Consumers can use the API to add, edit, remove, view and search Products, and export all Product Catalog items.
+It is a RESTful API solution in .NET Core for managing a Product Catalog. Consumers can use the API to add, edit, remove, view and search Products, and export all Product Catalog items.
 
 ## Requirements
 
@@ -16,17 +16,17 @@ Create a RESTful API solution in .NET Core for managing a Product Catalog. Consu
 
 ## Product Model
 
-    Id (int/guid – auto generated),
+    *Id* (int/guid – auto generated),
     
-    Code (string - unique),
+    *Code* (string - unique),
     
-    Name (string - mandatory),
+    *Name* (string - mandatory),
     
-    Picture (string - optional), //the URL of the picture
+    *Picture* (string - optional), //the URL of the picture
     
-    Price (decimal - mandatory),
+    *Price* (decimal - mandatory),
     
-    UpdatedAt (datetime - mandatory),
+    *UpdatedAt* (datetime - mandatory),
 
 ### Installing
 
@@ -49,3 +49,15 @@ Update-Database
 The Update command will create the database based on the context and domain classes and the migration snapshot, which is created using the add-migration or add command.
 
 If this is the first migration, then it will also create a table called __EFMigrationsHistory, which will store the name of all migrations, as and when they will be applied to the database.
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## Roadmap
+* Authentication/authorization mechanism.
+* Caching mechanism for some api requests.
+* Detailed Logging mechanism. And if necessary, using NoSql dbfor log data.
+* And it is going to be good achievement that storing the Picture datas in a Cloud storage service (e.g. Azure Blob Storage or AWS S3).
+
