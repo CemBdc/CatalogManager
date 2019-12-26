@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogManager.Dto", "Catal
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{3E1D1888-9AA8-4EFE-9F21-8B2DF1B5A888}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogManager.UnitTest", "CatalogManager.UnitTest\CatalogManager.UnitTest.csproj", "{B920993E-B247-4527-A798-54A20C3B2257}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogManager.UnitTest", "CatalogManager.UnitTest\CatalogManager.UnitTest.csproj", "{B920993E-B247-4527-A798-54A20C3B2257}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogManager.IntegrationTest", "CatalogManager.IntegrationTest\CatalogManager.IntegrationTest.csproj", "{ED493E57-7FA5-4AA0-8E1B-D6D021AF49E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogManager.IntegrationTest", "CatalogManager.IntegrationTest\CatalogManager.IntegrationTest.csproj", "{ED493E57-7FA5-4AA0-8E1B-D6D021AF49E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogManager.Benchmark", "CatalogManager.Benchmark\CatalogManager.Benchmark.csproj", "{5A907F2A-4C67-4B00-8855-44304F7EA35F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{ED493E57-7FA5-4AA0-8E1B-D6D021AF49E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED493E57-7FA5-4AA0-8E1B-D6D021AF49E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED493E57-7FA5-4AA0-8E1B-D6D021AF49E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A907F2A-4C67-4B00-8855-44304F7EA35F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A907F2A-4C67-4B00-8855-44304F7EA35F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A907F2A-4C67-4B00-8855-44304F7EA35F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A907F2A-4C67-4B00-8855-44304F7EA35F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +60,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B920993E-B247-4527-A798-54A20C3B2257} = {3E1D1888-9AA8-4EFE-9F21-8B2DF1B5A888}
 		{ED493E57-7FA5-4AA0-8E1B-D6D021AF49E3} = {3E1D1888-9AA8-4EFE-9F21-8B2DF1B5A888}
+		{5A907F2A-4C67-4B00-8855-44304F7EA35F} = {3E1D1888-9AA8-4EFE-9F21-8B2DF1B5A888}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {904E0DC4-52B2-4BEC-850D-AF76337F4C80}
