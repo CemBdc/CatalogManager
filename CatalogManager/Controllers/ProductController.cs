@@ -47,6 +47,11 @@ namespace CatalogManager.Controllers
         [SwaggerResponse(400, "If there is any error while creating product")]
         public async Task<ActionResult<GetProductDto>> Post([FromBody] AddProductDto productData)
         {
+            if (productData == null)
+            {
+                return BadRequest();
+            }
+
             await _product.Add(productData);
             return Ok(productData);
         }
