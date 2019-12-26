@@ -15,8 +15,9 @@ namespace CatalogManager.Data.Repository.Contracts
         Task<bool> Update(T entity);
         Task<bool> Delete(T entity);
 
-        Task<IEnumerable<T>> All();
-        Task<IEnumerable<T>> Where(Expression<Func<T, bool>> where);
-        IEnumerable<T> OrderBy<TKey>(Expression<Func<T, TKey>> orderBy, bool isDesc);
+        Task<IList<T>> All();
+        Task<IList<T>> Where(Expression<Func<T, bool>> where);
+        Task<T> Get(Expression<Func<T, bool>> where);
+        //IList<T> OrderBy<TKey>(Expression<Func<T, TKey>> orderBy, bool isDesc);
     }
 }

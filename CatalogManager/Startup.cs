@@ -42,22 +42,36 @@ namespace CatalogManager
 
             services.AddSwaggerGen(options =>
             {
+                options.EnableAnnotations();
+
                 options.SwaggerDoc("v1",
                     new Info
                     {
                         Version = "v1",
-                        Title = "v1 API",
-                        Description = "v1 API Description",
-                        TermsOfService = "Terms of usage v1"
+                        Title = "Catalog Manager",
+                        Description = "Catalog Manager Version 1(v1) API Documentation",
+                        TermsOfService = "Terms of usage v1",
+                        Contact = new Contact
+                        {
+                            Name = "Cem Bideci",
+                            Email = "cembdci@gmail.com",
+                            Url = "http://linkedin.com/in/cem-bideci",
+                        },
                     });
                 
                 options.SwaggerDoc("v2",
                     new Info
                     {
                         Version = "v2",
-                        Title = "v2 API",
-                        Description = "v2 API Description",
-                        TermsOfService = "Terms of usage v3"
+                        Title = "Catalog Manager",
+                        Description = "Catalog Manager Version 2(v2) API Documentation",
+                        TermsOfService = "Terms of usage v2",
+                        Contact = new Contact
+                        {
+                            Name = "Cem Bideci",
+                            Email = "cembdci@gmail.com",
+                            Url = "http://linkedin.com/in/cem-bideci",
+                        },
                     });
                 
                 options.OperationFilter<RemoveVersionFromParameter>();

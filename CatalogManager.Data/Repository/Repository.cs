@@ -22,57 +22,70 @@ namespace CatalogManager.Data.Repository
 
         public async Task<bool> Add(T entity)
         {
-            Table.Add(entity);
-            return await Save();
+            try
+            {
+                Table.Add(entity);
+                return await Task.FromResult(true);
+            }
+            catch (Exception e)
+            {
+                return await Task.FromResult(false);
+            }
         }
 
         public async Task<bool> Update(T entity)
         {
-            Table.Update(entity);
-            return await Save();
+            try
+            {
+                Table.Update(entity);
+                return await Task.FromResult(true);
+            }
+            catch (Exception e)
+            {
+                return await Task.FromResult(false);
+            }
         }
 
         public async Task<bool> Delete(T entity)
         {
             Table.Remove(entity);
-            return await Save();
+            return await Task.FromResult(true);
         }
 
-        public async Task<IEnumerable<T>> All()
+        public async Task<IList<T>> All()
         {
             return await Table.ToListAsync();
         }
 
-        public async Task<bool> Get(Expression<Func<T, bool>> where)
+        public async Task<T> Get(Expression<Func<T, bool>> where)
         {
-            Table.FirstOrDefaultAsync(where);
-            return await Save();
+            return await Table.FirstOrDefaultAsync(where);
         }
 
-        public async Task<IEnumerable<T>> Where(Expression<Func<T, bool>> where)
+        public async Task<IList<T>> Where(Expression<Func<T, bool>> where)
         {
             return await Table.Where(where).ToListAsync();
         }
 
-        public IEnumerable<T> OrderBy<TKey>(Expression<Func<T, TKey>> orderBy, bool isDesc)
-        {
-            if (isDesc)
-                return Table.OrderByDescending(orderBy);
-            return Table.OrderBy(orderBy);
-        }
+        //public IList<T> OrderBy<TKey>(Expression<Func<T, TKey>> orderBy, bool isDesc)
+        //{
+        //    if (isDesc)
+        //        return Table.OrderByDescending(orderBy);
+        //    return Table.OrderBy(orderBy);
+        //}
 
 
-        private async Task<bool> Save()
-        {
-            try
-            {
-                await _dbContext.SaveChangesAsync();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
+        //private async Task<bool> Save()
+        //{
+        //    try
+        //    {
+        //        await _dbContext.SaveChangesAsync();
+        //        return true;
+        //    }
+        //    catch
+        //    {
+        //        return false;
+        //    }
+        //}
     }
 }
