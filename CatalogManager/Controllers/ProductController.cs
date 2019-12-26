@@ -41,7 +41,6 @@ namespace CatalogManager.Controllers
         /// <param name="productData"></param>
         [HttpPost]
         [MapToApiVersion("1")]
-        [Produces("application/json")]
         [SwaggerOperation(Summary = "Creates the product data", Description = "Returns newly created productData")]
         [SwaggerResponse(200, "Everything worked and returns the newly created product")]
         [SwaggerResponse(400, "If there is any error while creating product")]
@@ -52,13 +51,16 @@ namespace CatalogManager.Controllers
                 return BadRequest();
             }
 
-            await _product.Add(productData);
+            var result = await _product.Add(productData);
+
+            if (!result)
+                return BadRequest("Could not created!");
+
             return Ok(productData);
         }
 
         [HttpGet("{code}")]
         [MapToApiVersion("1")]
-        [Produces("application/json")]
         [SwaggerOperation(Summary = "Gets the product data by code")]
         [SwaggerResponse(200, "Everything worked and returns the product")]
         [SwaggerResponse(204, "There is no product with that code")]
@@ -69,9 +71,55 @@ namespace CatalogManager.Controllers
         }
 
         [HttpGet]
-        public ActionResult<string> Get()
+        [MapToApiVersion("1")]
+        [SwaggerOperation(Summary = "Gets the all product data")]
+        [SwaggerResponse(200, "Everything worked and returns the product")]
+        [SwaggerResponse(204, "There is no product")]
+        public async Task<ActionResult<IEnumerable<GetProductDto>>> Get()
         {
-            return "value";
+            var product = await _product.GetAll();
+            return Ok(product);
+        }
+
+        [HttpPut]
+        [MapToApiVersion("1")]
+        [SwaggerOperation(Summary = "Updates the product data", Description = "Returns newly updated productData")]
+        [SwaggerResponse(200, "Everything worked and returns the newly updated product")]
+        [SwaggerResponse(400, "If there is any error while updating product")]
+        public async Task<ActionResult<GetProductDto>> Put([FromBody] AddProductDto productData)
+        {
+            if (productData == null)
+            {
+                return BadRequest();
+            }
+
+            var result = await _product.Update(productData);
+
+            if(!result)
+                return BadRequest("Could not updated!");
+
+            return Ok(productData);
+
+        }
+
+        [HttpDelete]
+        [MapToApiVersion("1")]
+        [SwaggerOperation(Summary = "Deletes the product data", Description = "Returns OK if productData deleted success otherwise BadRequest")]
+        [SwaggerResponse(200, "Everything worked and returns OK if deleted success")]
+        [SwaggerResponse(400, "If there is any error while deleting product")]
+        public async Task<ActionResult<GetProductDto>> Delete([FromBody] DeleteProductDto productData)
+        {
+            if (productData == null)
+            {
+                return BadRequest();
+            }
+
+            var result = await _product.Delete(productData);
+
+            if (!result)
+                return BadRequest("Could not deleted!");
+
+            return Ok("Deleted");
         }
 
         #region Versioned HealthCheck

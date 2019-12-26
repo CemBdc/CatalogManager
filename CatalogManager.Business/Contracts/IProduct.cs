@@ -10,7 +10,7 @@ namespace CatalogManager.Business.Contracts
     {
         Task<bool> Add(AddProductDto entity);
         Task<bool> Update(AddProductDto entity);
-        Task<bool> Delete(AddProductDto entity);
+        Task<bool> Delete(DeleteProductDto entity);
         Task<List<GetProductDto>> GetAll();
         Task<GetProductDto> GetProductByCode(string code);
     }

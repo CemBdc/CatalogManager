@@ -20,6 +20,11 @@ namespace CatalogManager.Business
         {
             try
             {
+                var entity = await _uow.Product.Get(p => p.Code == product.Code);
+
+                if (entity != null)
+                    return false;
+
                 await _uow.Product.Add(new Data.Models.Product
                 {
                     Code = product.Code,
@@ -84,14 +89,17 @@ namespace CatalogManager.Business
         {
             try
             {
-                await _uow.Product.Update(new Data.Models.Product
-                {
-                    Code = product.Code,
-                    Name = product.Name,
-                    Picture = product.Picture,
-                    Price = product.Price,
-                    UpdatedAt = product.UpdatedAt
-                });
+                var entity = await _uow.Product.Get(p => p.Code == product.Code);
+
+                if (entity == null)
+                    return false;
+                
+                entity.Name = product.Name;
+                entity.Picture = product.Picture;
+                entity.Price = product.Price;
+                entity.UpdatedAt = DateTime.Now;
+
+                await _uow.Product.Update(entity);
 
                 return await _uow.CompleteAsync();
 
@@ -102,18 +110,16 @@ namespace CatalogManager.Business
             }
         }
 
-        public async Task<bool> Delete(AddProductDto product)
+        public async Task<bool> Delete(DeleteProductDto product)
         {
             try
             {
-                await _uow.Product.Delete(new Data.Models.Product
-                {
-                    Code = product.Code,
-                    Name = product.Name,
-                    Picture = product.Picture,
-                    Price = product.Price,
-                    UpdatedAt = product.UpdatedAt
-                });
+                var entity = await _uow.Product.Get(p => p.Code == product.Code);
+
+                if (entity == null)
+                    return false;
+
+                await _uow.Product.Delete(entity);
 
                 return await _uow.CompleteAsync();
 
