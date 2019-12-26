@@ -26,6 +26,45 @@ namespace CatalogManager.Data.Models
 
         [Required]
         public DateTime UpdatedAt { get; set; }
-        
+
+        public Product(string code, string name, string picture, decimal price, DateTime updatedAt)
+        {
+            if (
+                string.IsNullOrEmpty(code) ||
+                string.IsNullOrEmpty(name) ||
+                price <= 0 || price > 999)
+            {
+                throw new Exception("Fields are not valid to create a new product.");
+            }
+
+            Code = code;
+            Name = name;
+            Picture = picture;
+            Price = price;
+            UpdatedAt = updatedAt;
+        }
+
+        public Product()
+        {
+
+        }
+
+        public void SetFields(string code, string name, string picture, decimal price, DateTime updatedAt)
+        {
+            if (
+                string.IsNullOrEmpty(code) ||
+                string.IsNullOrEmpty(name) ||
+                price <= 0 || price > 999)
+            {
+                throw new Exception("Fields are not valid to update.");
+            }
+
+            Code = code;
+            Name = name;
+            Picture = picture;
+            Price = price;
+            UpdatedAt = updatedAt;
+        }
+
     }
 }

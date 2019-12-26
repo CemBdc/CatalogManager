@@ -11,6 +11,7 @@ namespace CatalogManager.Business.Contracts
         Task<bool> Add(AddProductDto entity);
         Task<bool> Update(AddProductDto entity);
         Task<bool> Delete(AddProductDto entity);
-        Task<IEnumerable<AddProductDto>> All();
+        Task<List<GetProductDto>> GetAll();
+        Task<GetProductDto> GetProductByCode(string code);
     }
 }

@@ -35,9 +35,17 @@ namespace CatalogManager.Data.UnitOfWork
             return _dbContext.SaveChanges();
         }
 
-        public async Task<int> CompleteAsync()
+        public async Task<bool> CompleteAsync()
         {
-            return await _dbContext.SaveChangesAsync();
+            try
+            {
+                int _save = await _dbContext.SaveChangesAsync();
+                return await Task.FromResult(true);
+            }
+            catch (System.Exception e)
+            {
+                return await Task.FromResult(false);
+            }
         }
 
         public void Dispose() => _dbContext.Dispose();

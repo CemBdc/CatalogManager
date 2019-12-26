@@ -9,7 +9,7 @@ namespace CatalogManager.Data.UnitOfWork
     public interface IUnitOfWork
     {
         IProductRepository Product { get; }
-        Task<int> CompleteAsync();
+        Task<bool> CompleteAsync();
         int Complete();
     }
 }
