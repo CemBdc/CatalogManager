@@ -16,17 +16,17 @@ It is a RESTful API solution in .NET Core for managing a Product Catalog. Consum
 
 ## Product Model
 
-    *Id* (int/guid – auto generated),
+    Id (int/guid – auto generated),
     
-    *Code* (string - unique),
+    Code (string - unique),
     
-    *Name* (string - mandatory),
+    Name (string - mandatory),
     
-    *Picture* (string - optional), //the URL of the picture
+    Picture (string - optional), //the URL of the picture
     
-    *Price* (decimal - mandatory),
+    Price (decimal - mandatory),
     
-    *UpdatedAt* (datetime - mandatory),
+    UpdatedAt (datetime - mandatory),
 
 ### Installing
 
