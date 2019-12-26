@@ -36,7 +36,8 @@ namespace CatalogManager
                 o.DefaultApiVersion = new ApiVersion(1, 0);
             });
 
-            services.AddDbContext<CatalogManagerDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("CatalogManagerDB")));
+            ConfigureDatabase(services);
+
             services.AddScoped(typeof(IProduct), typeof(Product));
             services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
 
@@ -113,6 +114,11 @@ namespace CatalogManager
             });
 
             app.UseMvc();
+        }
+
+        public virtual void ConfigureDatabase(IServiceCollection services)
+        {
+            services.AddDbContext<CatalogManagerDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("CatalogManagerDB")));
         }
     }
 }
